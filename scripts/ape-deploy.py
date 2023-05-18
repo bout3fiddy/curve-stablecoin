@@ -21,7 +21,6 @@ rtokens = {
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 POOL_NAME = "crvUSD/{name}"
 POOL_SYMBOL = "crvUSD{name}"
-STABLESWAP_FACTORY_ADDRESS_PROVIDER_ID = 8
 
 OWNERSHIP_ADMIN = "0x40907540d8a6C65c637785e8f8B742ae6b0b9968"
 PARAMETER_ADMIN = "0x4EEb3bA4f221cA16ed4A0cC7254E2E32DF948c5f"
@@ -257,6 +256,8 @@ def deploy(network):
                     600,
                     1,  # 1% bound
                     **kw)
+
+            price_oracle.price_w(**kw)
 
             print('Price oracle price: {:.2f}'.format(price_oracle.price() / 1e18))
 
